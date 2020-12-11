@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "393041416211",
+    "firebase_url": "https://example-663cd.firebaseio.com",
+    "project_id": "example-663cd",
+    "storage_bucket": "example-663cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:393041416211:android:ddc3f752779472a87d6fe6",
+        "android_client_info": {
+          "package_name": "com.example.taller_material_desing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "393041416211-lassc36s6ehvhcdr91kfsj2bpfpg5i9v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.taller_material_desing",
+            "certificate_hash": "cf6dae594e1b09d4416973c5c9d230029bfe0566"
+          }
+        },
+        {
+          "client_id": "393041416211-mm3n9hal1lassirrmoqk927s3vsd40hr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdSb8N6r10oLZ3j5uR6aT45MCBc9Cd5no"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "393041416211-mm3n9hal1lassirrmoqk927s3vsd40hr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

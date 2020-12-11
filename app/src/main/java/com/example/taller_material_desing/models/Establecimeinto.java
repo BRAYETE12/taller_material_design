@@ -51,4 +51,8 @@ public class Establecimeinto {
         Datos.guardar(this);
     }
 
+    public void eliminar(){
+        Datos.eliminar(this);
+    }
+
 }

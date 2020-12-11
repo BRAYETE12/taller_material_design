@@ -11,4 +11,11 @@
     <string name="error_numero">El campo es requerido</string>
     <string name="guardado_exitoso">Establecimiento guardada exitosamente</string>
 
+    <string name="select_foto">Seleccione la foto del establecimeinto</string>
+
+    <string name="titulo_eliminar">Eliminar Establecimeinto</string>
+    <string name="msg_eliminar">¿Está seguro de eliminar este establecimeinto?</string>
+    <string name="msg_si">Si</string>
+    <string name="msg_no" translatable="false">No</string>
+
 </resources>

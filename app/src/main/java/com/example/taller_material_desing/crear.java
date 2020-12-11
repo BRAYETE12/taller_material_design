@@ -2,16 +2,29 @@ package com.example.taller_material_desing;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.taller_material_desing.models.Establecimeinto;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 public class crear extends AppCompatActivity {
 
     private EditText nit, nombre, direccion;
+    private ImageView foto;
+    private InputMethodManager im;
+    private Uri uri;
+    private StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +34,9 @@ public class crear extends AppCompatActivity {
         this.nit = findViewById(R.id.txNIT);
         this.nombre = findViewById(R.id.txNombre);
         this.direccion = findViewById(R.id.txDireccion);
+        foto = findViewById(R.id.imgFotoSelected);
+
+        storageReference = FirebaseStorage.getInstance().getReference();
 
     }
 
@@ -28,6 +44,10 @@ public class crear extends AppCompatActivity {
     public void guardar(View v){
 
         if(this.validar()) {
+
+            im = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            im.hideSoftInputFromWindow(nit.getWindowToken(), 0);
+
             String nit = this.nit.getText().toString();
             String nom = this.nombre.getText().toString();
             String dir = this.direccion.getText().toString();
@@ -36,7 +56,8 @@ public class crear extends AppCompatActivity {
             X.guardar();
 
             this.limpiar();
-            Toast.makeText(this, R.string.guardado_exitoso, Toast.LENGTH_LONG).show();
+            Snackbar.make(v, R.string.guardado_exitoso, Snackbar.LENGTH_LONG).show();
+            uri = null;
         }
     }
 
@@ -74,5 +95,33 @@ public class crear extends AppCompatActivity {
         return true;
     }
 
+    public void subirFoto(String id){
+        StorageReference child = storageReference.child(id);
+        UploadTask uploadTask = child.putFile(uri);
+    }
+
+    public void onBackPressed(){
+        finish();
+        Intent i = new Intent(crear.this, MainActivity.class);
+        startActivity(i);
+    }
+
+    public void seleccionarFoto(View v){
+        Intent in = new Intent();
+        in.setType("image/*");
+        in.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(in,
+                getString(R.string.select_foto)), 1);
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1){
+            uri = data.getData();
+            if (uri != null){
+                foto.setImageURI(uri);
+            }
+        }
+    }
 
 }
